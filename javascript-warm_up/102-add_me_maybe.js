@@ -1,6 +1,6 @@
-function incrementAndCall(number, theFunction) {
-    let incrementedNumber = number + 1;
+function addMeMaybe(number, theFunction) {
+    const incrementedNumber = number + 1;
     theFunction(incrementedNumber);
 }
   
-module.exports = incrementAndCall;
+module.exports.addMeMaybe = addMeMaybe;
