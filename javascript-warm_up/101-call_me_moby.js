@@ -3,9 +3,3 @@ function executeXTimes(x, theFunction) {
       theFunction();
     }
 }
-
-function execute(){
-    console.log("C is fun'")
-}
-
-executeXTimes(3, execute);
