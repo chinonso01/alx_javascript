@@ -1,6 +1,7 @@
 #!/usr/bin/node
 // 6-rectangle.js
-const Square5 = require('./5-square.js')
+import Square from './5-square.js';
+const Square5 = Square
 
 
 class Square extends  Square5{
