@@ -37,7 +37,7 @@ class Rectangle {
 
 class Square extends Rectangle {
     constructor(size){
-        super(w, h);
+        super(size, size);
     }
 }
 
