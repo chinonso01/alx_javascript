@@ -1,44 +1,11 @@
 #!/usr/bin/node
 // 6-rectangle.js
-class Rectangle {
-    constructor(w, h){
-        if (w > 0 && h > 0){
-            this.width = w;
-            this.height = h;
-        }
-        else {
-            Object.create(null);
-        }
-    }
-
-    print() {
-        if (this.width && this.height) {
-          for (let i = 0; i < this.height; i++) {
-            console.log('X'.repeat(this.width));
-          }
-        }
-    }
-
-    rotate() {
-        if (this.width && this.height) {
-          const temp = this.width;
-          this.width = this.height;
-          this.height = temp;
-        }
-    }
-
-    double() {
-        if (this.width && this.height) {
-          this.width *= 2;
-          this.height *= 2;
-        }
-    }
-}
+const Square5 = require('./5-square.js')
 
 
-class Square extends Rectangle {
+class Square extends  Square5{
     constructor(size){
-        super(size, size);
+        super(size);
     }
 
     charPrint(c) {
