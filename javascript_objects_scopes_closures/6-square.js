@@ -35,15 +35,10 @@ class Rectangle {
     }
 }
 
+
 class Square extends Rectangle {
     constructor(size){
         super(size, size);
-    }
-}
-
-class Square extends Square {
-    constructor(size){
-        super(size);
     }
 
     charPrint(c) {
