@@ -51,8 +51,8 @@ class Square extends Square {
           c = 'X';
         }
     
-        for (let i = 0; i < this.height; i++) {
-          console.log(c.repeat(this.width));
+        for (let i = 0; i < this.size; i++) {
+          console.log(c.repeat(this.size));
         }
     }
 }
