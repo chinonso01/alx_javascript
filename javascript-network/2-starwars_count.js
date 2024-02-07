@@ -16,9 +16,14 @@ request.get(apiUrl, (error, response, body) => {
         const films = JSON.parse(body).results;
 
         // Count the number of films where "Wedge Antilles" is present
-        const numFilmsWithWedge = films.filter(film =>
-            film.characters.includes(`https://swapi-api.alx-tools.com/api/people/${characterId}/`)
-        ).length;
+        let numFilmsWithWedge = 0;
+        films.forEach(film => {
+            film.characters.forEach(character => {
+                if (character.includes(`/${characterId}/`)) {
+                    numFilmsWithWedge++;
+                }
+            });
+        });
 
         // Print the count
         console.log(numFilmsWithWedge);
