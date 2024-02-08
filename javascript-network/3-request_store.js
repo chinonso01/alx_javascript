@@ -1,26 +1,32 @@
-const fs = require('fs');
+// Import the request module
 const request = require('request');
+// Import the fs module
+const fs = require('fs');
 
-const url = process.argv[2];
-const filePath = process.argv[3];
+// Get the command line arguments
+const url = process.argv[2]; // The URL to request
+const filePath = process.argv[3]; // The file path to store the body response
 
-if (!url || !filePath) {
-  console.error("Usage: node script.js <url> <file_path>");
-  process.exit(1);
-}
-
-request.get({ url: url, encoding: 'utf-8' }, (error, response, body) => {
+// Make a GET request to the URL
+request.get(url, (error, response, body) => {
+  // Check for errors
   if (error) {
-    console.error("Error fetching webpage content:", error);
-  } else if (response.statusCode !== 200) {
-    console.error("Error: Unexpected status code", response.statusCode);
-  } else {
-    fs.writeFile(filePath, body, { encoding: 'utf-8' }, (err) => {
-      if (err) {
-        console.error("Error writing to file:", err);
-      } else {
-        console.log("Webpage content successfully stored in", filePath);
-      }
-    });
+    console.error(error);
+    return;
   }
+  // Check for status code
+  if (response.statusCode !== 200) {
+    console.error(`Status code: ${response.statusCode}`);
+    return;
+  }
+  // Write the body response to the file in UTF-8 encoding
+  fs.writeFile(filePath, body, 'utf8', (error) => {
+    // Check for errors
+    if (error) {
+      console.error(error);
+      return;
+    }
+    // Log a success message
+    console.log(`Saved the contents of ${url} to ${filePath}`);
+  });
 });
