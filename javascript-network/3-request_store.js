@@ -2,6 +2,7 @@
 const request = require('request');
 // Import the fs module
 const fs = require('fs');
+fs.writeFile(filePath, body.trim(), 'utf8', (error) => {...});
 
 // Get the command line arguments
 const url = process.argv[2]; // The URL to request
