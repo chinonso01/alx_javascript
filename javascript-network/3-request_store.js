@@ -1,4 +1,4 @@
-const fs = require('http://localhost:5050/route_0');
+const fs = require('fs');
 const request = require('request');
 
 const url = process.argv[2];
