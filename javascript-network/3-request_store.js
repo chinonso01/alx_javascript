@@ -1,25 +1,26 @@
+const fs = require('http://localhost:5050/route_0');
 const request = require('request');
-const fs = require('fs');
 
-// Get the URL and file path from the command line arguments
 const url = process.argv[2];
 const filePath = process.argv[3];
 
-// Make a GET request to the URL
-request.get(url, (error, response, body) => {
-    if (error) {
-        // If there's an error, print it
-        console.error(error);
-    } else {
-        // Write the body response to the file
-        fs.writeFile(filePath, body, 'utf-8', (err) => {
-            if (err) {
-                // If there's an error writing to the file, print it
-                console.error(err);
-            } else {
-                // Print a success message
-                console.log(`Content successfully saved to ${filePath}`);
-            }
-        });
-    }
+if (!url || !filePath) {
+  console.error("Usage: node script.js <url> <file_path>");
+  process.exit(1);
+}
+
+request.get({ url: url, encoding: 'utf-8' }, (error, response, body) => {
+  if (error) {
+    console.error("Error fetching webpage content:", error);
+  } else if (response.statusCode !== 200) {
+    console.error("Error: Unexpected status code", response.statusCode);
+  } else {
+    fs.writeFile(filePath, body, { encoding: 'utf-8' }, (err) => {
+      if (err) {
+        console.error("Error writing to file:", err);
+      } else {
+        console.log("Webpage content successfully stored in", filePath);
+      }
+    });
+  }
 });
