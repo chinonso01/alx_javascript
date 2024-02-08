@@ -15,8 +15,8 @@ request.get({ url: url, encoding: null }, (error, response, body) => {
   } else if (response.statusCode !== 200) {
     console.error("Error: Unexpected status code", response.statusCode);
   } else {
-    const decodedBody = body.toString('utf8');
-    fs.writeFile(filePath, decodedBody, { encoding: 'utf-8' }, (err) => {
+    const utf8Body = body.toString('utf-8');
+    fs.writeFile(filePath, utf8Body, { encoding: 'utf-8' }, (err) => {
       if (err) {
         console.error("Error writing to file:", err);
       } else {
