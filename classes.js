@@ -12,7 +12,7 @@ const Rectangle = class {
     }
 }*/
 
-class Foo {
+/*class Foo {
     constructor(name){
         this.name = name;
     }
@@ -34,4 +34,33 @@ class FooBar extends Foo {
 }
 
 const firstFooBar = new FooBar('Foo', 2);
-console.log(firstFooBar.getFullName());
+console.log(firstFooBar.getFullName());*/
+
+
+const people = [
+    {name: "Jack", hasPet: true},
+    {name: "Jill", hasPet: false},
+    {name: "Alice", hasPet: true},
+    {name: "Bob", hasPet: false}
+];
+
+function filterUsers(array, callback){
+    let NewPeoples = [];
+    for(let item of array){
+        if (callback(item)){
+            NewPeoples.push(item);
+        }
+    }
+    return NewPeoples;
+}
+
+function check(props){
+    if(props.hasPet){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+
+console.log(filterUsers(people, check))
